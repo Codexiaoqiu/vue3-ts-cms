@@ -19,7 +19,9 @@ const systemModule: Module<ISystemState, IRootState> = {
       goodsCount: 0,
       menuList: [],
       menuCount: 0,
-      queryInfo: {}
+      queryInfo: {},
+      categoryCount: 0,
+      categoryList: []
     }
   },
   mutations: {
@@ -46,6 +48,12 @@ const systemModule: Module<ISystemState, IRootState> = {
     },
     changeMenuCount(state, menuCount: number) {
       state.menuCount = menuCount
+    },
+    changeCategoryList(state, menuList: any[]) {
+      state.categoryList = menuList
+    },
+    changeCategoryCount(state, menuCount: number) {
+      state.categoryCount = menuCount
     },
     changeQueryInfo(state, queryInfo) {
       state.queryInfo = queryInfo
@@ -81,6 +89,7 @@ const systemModule: Module<ISystemState, IRootState> = {
       commit('changeQueryInfo', payload.queryInfo)
       const pageResult = await getPageListData(pageUrl, payload.queryInfo)
       const { list, totalCount } = pageResult.data
+      console.log(pageResult)
       // 将数据存储到state中
       commit(
         `change${pageName.charAt(0).toUpperCase() + pageName.slice(1)}List`,
@@ -91,6 +100,7 @@ const systemModule: Module<ISystemState, IRootState> = {
         totalCount
       )
     },
+    // 删除页面信息
     async deletePageDataAction(context, payload: any) {
       // 获取pageName和id
       const { pageName, id } = payload
@@ -116,6 +126,7 @@ const systemModule: Module<ISystemState, IRootState> = {
         queryInfo: context.state.queryInfo
       })
     },
+    // 修改页面信息
     async editPageDataAction(context, payload: any) {
       // 发送修改信息请求
       const { pageName, editData, id } = payload

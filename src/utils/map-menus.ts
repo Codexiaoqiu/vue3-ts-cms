@@ -33,6 +33,7 @@ export function mapMenusToRoutes(userMenus: any[]): RouteRecordRaw[] {
     }
   }
   _recurseGetRoute(userMenus)
+  // console.log(routes)
   return routes
 }
 
@@ -79,7 +80,7 @@ export function mapMenusToPermissions(userMenus: any[]) {
   _recurseGetPermission(userMenus)
   return permission
 }
-
+// 获取选择的叶子页面
 export function menuMapLeafKeys(menuList: any[]) {
   const leftKeys: number[] = []
 

@@ -38,7 +38,8 @@ const options: any = computed(() => {
       left: '10%',
       top: 'bottom',
       calculable: true,
-      seriesIndex: [1],
+      text: ['High', 'Low'],
+      // seriesIndex: [1],
       inRange: {
         color: ['#046fb8', '#0dbc79'] // 蓝绿
       }
@@ -46,28 +47,18 @@ const options: any = computed(() => {
     geo: {
       show: true,
       map: 'china',
-      label: {
-        normal: {
+      roam: 'scale',
+      emphasis: {
+        label: {
           show: false
         },
-        emphasis: {
-          show: false
-        }
-      },
-      roam: 'scale',
-      itemStyle: {
-        normal: {
-          // 板块的颜色
+        // 鼠标移动到板块时显示
+        areaColor: 'red',
+        itemStyle: {
+          // areaColor: '#f4cccc',
           areaColor: '#757982',
           // 板块边界的颜色
-          borderColor: '#fff'
-        },
-        emphasis: {
-          // 鼠标移动到板块时显示
-          areaColor: 'red',
-          itemStyle: {
-            areaColor: '#f4cccc'
-          }
+          borderColor: '#fc8452'
         }
       }
     },
