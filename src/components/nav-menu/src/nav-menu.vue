@@ -54,12 +54,10 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const userMenus = computed(() => store.state.loginModule.userMenus)
-
     const route = useRoute()
     const currentPath = route.path
     const menu = pathMapToMenu(userMenus.value, currentPath)
     const defaultValue = ref(menu.id + '')
-
     const router = useRouter()
     const handleMenuItemClick = (item: any) => {
       router.push({

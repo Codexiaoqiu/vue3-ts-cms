@@ -33,13 +33,15 @@ export default defineComponent({
   },
   emits: ['foldChange'],
   setup(props, { emit }) {
+    const store = useStore()
+    const route = useRoute()
     const isFold = ref(false)
     const handleFoldClick = () => {
       isFold.value = !isFold.value
       emit('foldChange', isFold.value)
+      console.log(route.meta)
     }
-    const store = useStore()
-    const route = useRoute()
+
     const breadcrumbs = computed(() => {
       const userMenus = store.state.loginModule.userMenus
       const currentPath = route.path

@@ -18,6 +18,7 @@ export default defineComponent({
   components: {
     pageContent
   },
+
   setup() {
     return { contentTableConfig }
   }

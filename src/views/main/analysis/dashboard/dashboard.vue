@@ -29,6 +29,11 @@
           <barEchart v-bind="categoryGoodsFavor"></barEchart>
         </chartCard>
       </el-col>
+      <el-col :span="12">
+        <chartCard title="分类商品的收藏">
+          <graph-chart></graph-chart>
+        </chartCard>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -44,7 +49,8 @@ import {
   roseEchart,
   lineEchart,
   barEchart,
-  mapEchart
+  mapEchart,
+  graphChart
 } from '@/components/page-echarts/index'
 
 export default defineComponent({
@@ -54,7 +60,8 @@ export default defineComponent({
     roseEchart,
     lineEchart,
     barEchart,
-    mapEchart
+    mapEchart,
+    graphChart
   },
   setup() {
     const store = useStore()
